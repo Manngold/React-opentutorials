@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React - Opentutorials
 
-## Available Scripts
+정보의 양이 급증하면서 프론트엔드 생태계에도 엄청난 정보의 양에 효율적인 대응을 하기 위해서 발전하기 시작한다
 
-In the project directory, you can run:
+그렇게 페이스북에서 React라는 라이브러리를 발표하고 사람들은 React의 가독성, 코드 재사용성, 유지보수의 장점에 열광하게 된다
 
-### `yarn start`
+## 개발환경 구축
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+npx create-react-app my-app
+cd my-app
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 배포
 
-### `yarn test`
+create-react-app이란 명령어를 사용하여 개발을 하면 개발자의 편의를 위해 여러 모듈이 설치되어있는 상태라 프로그램 자체가 많이 무겁다
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+따라서 `yarn build` 명령어를 수행하면 불필요한 정보를 정리하면서 배포를 위해 필요한 기능만을 남기고 정리를 한다 그리고 `build` 디렉토리에 배포를 위한 파일들이 생성된다
 
-### `yarn build`
+## Component 생성
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+컴포넌트는 기존 HTML5의 sementic tag처럼 개발자의 의도에 따라 코드를 분활하여 가독성, 재사용성, 유지보수 측면을 극대화 시키는 것이다
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+컴포넌트를 생성할 때 하나의 태그 안에 속해있어야 한다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## props
 
-### `yarn eject`
+이전에 컴포넌트를 생성하면서 우리는 효율적으로 코드를 작성할 수 있지만 같은 컴포넌트에 다른 정보가 담긴다면 매번 구조는 같지만 내용이 다른 컴포넌트를 생성해야 한다.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+따라서 이런 비효율성을 해결하고자 props의 개념이 들어간다
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+기존 HTML의 attribute처럼 key에 대한 value를 지정하고 그 key와 value는 해당 컴포넌트의 props에 저장이 된다
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+따라서 `<App name="manngold">`로 props를 넘겨주면 App 컴포넌트 내에서 `{this.props.name}`으로 해당 props를 사용할 수 있다 따라서 이런 기능을 활용하면 코드의 재사용성이 대폭 증가한다
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Component 분리
 
-## Learn More
+컴포넌트가 몇 개 사용 안되는 소규모 프로젝트를 진행할 때에는 메인 컴포넌트에 해도 상관은 없겠지만 규모가 커질수록 컴포넌트의 양은 방대해질 것이다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+따라서 서브 컴포넌트를 모아두는 파일을 생성해서 모아두고 import를 통해서 가져오면 관리가 수월해진다
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## state
 
-### Code Splitting
+state는 props와 함께 비교하면서 알아보자
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+props는 컴포넌트의 기본 동작을 조작하는 도구이다 사용자와 개발자에게 중요한 정보
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+state는 사용자가 알지 못하게 컴포넌트 내부적으로 사용되는 것이고 복합적이며 다양한 것을 제작을 할 수 있다
