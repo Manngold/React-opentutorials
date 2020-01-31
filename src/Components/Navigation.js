@@ -8,7 +8,17 @@ class Navigation extends Component {
         while (i < data.length) {
             lists.push(
                 <li key={data[i].id}>
-                    <a href={"/content/" + data[i].id}>{data[i].title}</a>
+                    <a
+                        href={"/content/" + data[i].id}
+                        contentid={data[i].id}
+                        onClick={e => {
+                            console.log(e.target.contentid);
+                            e.preventDefault();
+                            this.props.handleMode();
+                        }}
+                    >
+                        {data[i].title}
+                    </a>
                 </li>
             );
             i += 1;

@@ -7,7 +7,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mode: "welcome",
+            welcomeMode: true,
             subject: { title: "WEB", sub: "World Wide Web" },
             welcome: { title: "Welcome", desc: "Hello React!!" },
             contents: [
@@ -21,18 +21,36 @@ class App extends Component {
             ]
         };
     }
+    handleMode = path => {
+        if (path === "welcome") {
+            this.setState({ welcomeMode: true });
+        } else {
+            this.setState({ welcomeMode: false });
+        }
+    };
     render() {
         return (
             <div className="App">
                 <Subject
                     title={this.state.subject.title}
                     sub={this.state.subject.sub}
+                    handleMode={this.handleMode}
                 ></Subject>
-                <Navigation data={this.state.contents}></Navigation>
-                <Content
-                    title="HTML"
-                    desc="HTML is HyperText Mark-up Language"
-                ></Content>
+                <Navigation
+                    data={this.state.contents}
+                    handleMode={this.handleMode}
+                ></Navigation>
+                {this.state.welcomeMode ? (
+                    <Content
+                        title={this.state.welcome.title}
+                        desc={this.state.welcome.desc}
+                    ></Content>
+                ) : (
+                    <Content
+                        title={this.state.contents[0].title}
+                        desc={this.state.contents[0].desc}
+                    ></Content>
+                )}
             </div>
         );
     }

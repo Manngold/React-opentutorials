@@ -5,7 +5,15 @@ class Subject extends Component {
         return (
             <header>
                 <h1>
-                    <a href="/">{this.props.title}</a>
+                    <a
+                        href="/"
+                        onClick={e => {
+                            e.preventDefault();
+                            this.props.handleMode("welcome");
+                        }}
+                    >
+                        {this.props.title}
+                    </a>
                 </h1>
                 {this.props.sub}
             </header>
