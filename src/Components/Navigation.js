@@ -12,9 +12,12 @@ class Navigation extends Component {
                         href={"/content/" + data[i].id}
                         contentid={data[i].id}
                         onClick={e => {
-                            console.log(e.target.contentid);
                             e.preventDefault();
-                            this.props.handleMode();
+                            this.props.handleMode(
+                                "read",
+                                parseInt(e.target.attributes.contentid.value) -
+                                    1
+                            );
                         }}
                     >
                         {data[i].title}

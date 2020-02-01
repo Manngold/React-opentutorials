@@ -8,6 +8,7 @@ class App extends Component {
         super(props);
         this.state = {
             welcomeMode: true,
+            nowContent: null,
             subject: { title: "WEB", sub: "World Wide Web" },
             welcome: { title: "Welcome", desc: "Hello React!!" },
             contents: [
@@ -21,11 +22,11 @@ class App extends Component {
             ]
         };
     }
-    handleMode = path => {
+    handleMode = (path, id) => {
         if (path === "welcome") {
-            this.setState({ welcomeMode: true });
+            this.setState({ welcomeMode: true, nowContent: null });
         } else {
-            this.setState({ welcomeMode: false });
+            this.setState({ welcomeMode: false, nowContent: id });
         }
     };
     render() {
@@ -47,8 +48,8 @@ class App extends Component {
                     ></Content>
                 ) : (
                     <Content
-                        title={this.state.contents[0].title}
-                        desc={this.state.contents[0].desc}
+                        title={this.state.contents[this.state.nowContent].title}
+                        desc={this.state.contents[this.state.nowContent].desc}
                     ></Content>
                 )}
             </div>
